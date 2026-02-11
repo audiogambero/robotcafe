@@ -1,7 +1,6 @@
 #include "utils.h"
 #include <gb/gb.h>
 
-#define RESTORE_PALETTE BGP_REG = 0b11100100
 static const uint8_t fade_palette_values[4] = {0b11100100, 0b10010000, 0b01000000, 0b00000000};    //Fade to white
 
 #define SCREEN_FADE_FRAMES 8    // Frames per each palette
