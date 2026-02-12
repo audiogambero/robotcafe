@@ -4,6 +4,7 @@
 #include "gameloop.h"
 #include "utils.h"
 #include "mob.h"
+#include "textbox.h"
 
 #include "../res/cafe_map.h"
 #include "../res/cafe_tiles.h"
@@ -59,6 +60,15 @@ void handle_input()
         player_y += 1u;
         player_sprite = P_SPRITE_DOWN;
     }
+
+    if(joypad_state & J_A)
+    {
+        show_textbox();
+    }
+    if(joypad_state & J_B)
+    {
+        hide_textbox();
+    }
 }
 
 void update_player()
@@ -69,6 +79,7 @@ void update_player()
 
 void run_gameloop()
 {
+    init_textbox();
     Mob* mob = mobs;
     for(int m = 0; m < NUM_MOBS; m++)
     {
@@ -86,6 +97,8 @@ void run_gameloop()
         {
             mob_tick(mob++);
         }
+
+        update_textbox();
         vsync();
     }
 }
