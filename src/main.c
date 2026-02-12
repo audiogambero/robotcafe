@@ -8,6 +8,7 @@ void main(void)
 {
     run_title();
     gameloop_setup_gfx();
+    run_gameloop();
 
     // Loop forever
     while(1) {
