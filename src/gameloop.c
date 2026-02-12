@@ -1,7 +1,9 @@
 #include <gb/gb.h>
+#include <rand.h>
 
 #include "gameloop.h"
 #include "utils.h"
+#include "mob.h"
 
 #include "../res/cafe_map.h"
 #include "../res/cafe_tiles.h"
@@ -17,6 +19,9 @@ uint8_t player_y = 70;
 uint8_t player_sprite;
 
 uint8_t joypad_state;
+
+#define NUM_MOBS 5
+Mob mobs[NUM_MOBS];
 
 void gameloop_setup_gfx()
 {
@@ -64,11 +69,23 @@ void update_player()
 
 void run_gameloop()
 {
+    Mob* mob = mobs;
+    for(int m = 0; m < NUM_MOBS; m++)
+    {
+        mob_init(mob++, m + 1);
+    }
+
     while(1)
     {
         joypad_state = joypad();
         handle_input();
         update_player();
+
+        mob = mobs;
+        for(int m = 0; m < NUM_MOBS; m++)
+        {
+            mob_tick(mob++);
+        }
         vsync();
     }
 }
