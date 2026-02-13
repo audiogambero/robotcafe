@@ -3,15 +3,14 @@
 #include "title.h"
 #include "utils.h"
 
-#include "../res/cafe_map.h"
-#include "../res/cafe_tiles.h"
+#include "../res/titlescreen.h"
 
 void title_setup_gfx()
 {
     SCREEN_WHITE;
     DISPLAY_OFF;
-    set_bkg_data(0, 127u, cafe_tiles);
-    set_bkg_tiles(0, 0, 20u, 18u, cafe_mapPLN0);
+    set_bkg_data(0, titlescreen_TILE_COUNT, titlescreen_tiles);
+    set_bkg_tiles(0, 0, 20u, 18u, titlescreen_map);
     SHOW_BKG;
     DISPLAY_ON;
 }
