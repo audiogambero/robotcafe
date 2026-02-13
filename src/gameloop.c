@@ -64,6 +64,7 @@ void handle_input()
     if(joypad_state & J_A)
     {
         show_textbox();
+        set_textbox("I WANT A GLASS OF MECHANICAL LUBRICANT\0");
     }
     if(joypad_state & J_B)
     {
